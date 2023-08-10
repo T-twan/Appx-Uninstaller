@@ -1,10 +1,11 @@
-﻿# Note: the below command will change the execution polciy temporarily for one session only:
+# Note: the below command will change the execution polciy temporarily for one session only:
 #Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
 
 # List of Apps to search for
 $apps = (
 
+#'MicrosoftTeams',
 'Microsoft.GetHelp', 
 'Microsoft.WindowsMaps', 
 'Microsoft.WindowsCamera', 
@@ -15,10 +16,10 @@ $apps = (
 '')
 
 # Create an array to hold unsuccessful attempts
-$notFound = [System.Collections.ArrayList]@()
+$notFound = @()
 
 # Create an array to hold the list
-$list = [System.Collections.ArrayList]@()
+$list = @()
 
 # Process each line
 foreach ($line in $apps) {
@@ -27,21 +28,25 @@ foreach ($line in $apps) {
 
     # Ignore empty lines and Get the package, if it exists
 
-    if ((-not [string]::IsNullOrWhiteSpace($line) -and ($package = Get-AppxPackage | Where-Object { $_.Name -eq $line -or $_.PackageFullName -eq $line }))) {
+    if ( (-not [string]::IsNullOrWhiteSpace($line)) -and ($package = Get-AppxPackage | Where-Object { $_.Name -eq $line -or $_.PackageFullName -eq $line }) ) {
     
         # Adds the packages to the list
-		$list.Add($package)
+		$list += $package
         } 
         
         else {
-            $notFound.Add($line)             
+         # Adds the packages to the notFound list if lenght is > 1
+            if ($line.length -gt 1) {
+                # Adds the packages to the list
+		        $notFound += $line
+                }      
         }
     }
 
 
 # Display AppX packages that are installed
-#Write-Host 'All packages installed:'
-#Get-AppxPackage | Select Name, PackageFullName | Out-Host
+Write-Host 'All packages installed:'
+Get-AppxPackage | Select Name, PackageFullName | Out-Host
 
 
 # Lists the packages that are not found
