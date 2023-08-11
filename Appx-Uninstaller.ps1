@@ -5,7 +5,7 @@
 # List of Apps to search for
 $apps = (
 
-#'MicrosoftTeams',
+'MicrosoftTeams',
 'Microsoft.GetHelp', 
 'Microsoft.WindowsMaps', 
 'Microsoft.WindowsCamera', 
@@ -45,8 +45,8 @@ foreach ($line in $apps) {
 
 
 # Display AppX packages that are installed
-Write-Host 'All packages installed:'
-Get-AppxPackage | Select Name, PackageFullName | Out-Host
+#Write-Host 'All packages installed:'
+#Get-AppxPackage | Select Name, PackageFullName | Out-Host
 
 
 # Lists the packages that are not found
@@ -56,3 +56,8 @@ Write-Host ($notFound -join "`n")
 
 # Create GUI list to remove-AppxPackage
 $list | Out-GridView -PassThru | Remove-AppxPackage
+
+
+#Pauses the script until pressed enter
+Write-Host ''
+read-host “Press ENTER to exit”
