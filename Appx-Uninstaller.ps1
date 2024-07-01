@@ -1,4 +1,4 @@
-# Note: the below command will change the execution polciy temporarily for one session only:
+﻿# Note: the below command will change the execution polciy temporarily for one session only:
 #Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
 
@@ -11,6 +11,16 @@ $apps = (
 'Microsoft.WindowsCamera', 
 'Microsoft.Getstarted', 
 'Microsoft.People',
+'Microsoft.Todos',
+'Microsoft.YourPhone',
+'MicrosoftWindows.CrossDevice',
+'Microsoft.WindowsFeedbackHub',
+'Microsoft.BingWeather',
+'Microsoft.BingNews',
+'Microsoft.BingSearch',
+#Cortana:
+'Microsoft.549981C3F5F10',
+  
 #'Microsoft.XboxGameOverlay',
 
 '')
@@ -45,8 +55,7 @@ foreach ($line in $apps) {
 
 
 # Display AppX packages that are installed
-#Write-Host 'All packages installed:'
-#Get-AppxPackage | Select Name, PackageFullName | Out-Host
+Get-AppxPackage | Select Name, PackageFullName | Out-Host
 
 
 # Lists the packages that are not found
