@@ -18,10 +18,26 @@ $apps = (
 'Microsoft.BingWeather',
 'Microsoft.BingNews',
 'Microsoft.BingSearch',
+'Clipchamp.Clipchamp',
+'Microsoft.MicrosoftSolitaireCollection',
+'MSTeams',
+'MicrosoftCorporationII.QuickAssist',
+'Microsoft.Copilot',
+'Microsoft.MicrosoftStickyNotes',
+
 #Cortana:
 'Microsoft.549981C3F5F10',
-  
-#'Microsoft.XboxGameOverlay',
+
+#Xbox Services
+'Microsoft.XboxSpeechToTextOverlay',
+'Microsoft.Xbox.TCUI',
+'Microsoft.XboxIdentityProvider',
+
+#Following Xbox app gives Error Code:
+#'Microsoft.XboxGameCallableUI',
+#'Microsoft.XboxGamingOverlay',
+
+
 
 '')
 
